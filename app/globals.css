@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: #f2efe9;
+  background-image: linear-gradient(#00000006 1px, transparent 1px);
+  background-size: 100% 32px;
+}
+
+::selection {
+  background: #ffe066;
+  color: #0d0d10;
+}
+
+:focus-visible {
+  outline: 2px solid #1f6f8b;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* The one motion moment: the intro timeline draws itself once on load. */
+@keyframes sweep {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseBar {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.animate-sweep {
+  transform-origin: left center;
+  animation: sweep 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.animate-rise {
+  animation: riseIn 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.pulse-bar {
+  animation: pulseBar 1.6s ease-in-out infinite;
+}
+
+/* Custom range slider, used for durations and the clip strip. */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+  height: 2px;
+  background: #d8d2c6;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  margin-top: -7px;
+  border-radius: 999px;
+  background: #0d0d10;
+  border: 2px solid #f2efe9;
+  box-shadow: 0 0 0 1px #0d0d10;
+  cursor: pointer;
+}
+
+input[type='range']::-moz-range-track {
+  height: 2px;
+  background: #d8d2c6;
+}
+
+input[type='range']::-moz-range-thumb {
+  height: 14px;
+  width: 14px;
+  border-radius: 999px;
+  background: #0d0d10;
+  border: 2px solid #f2efe9;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-sweep,
+  .animate-rise,
+  .pulse-bar {
+    animation: none !important;
+  }
+}
+
+textarea,
+input,
+select {
+  font-family: inherit;
+}
